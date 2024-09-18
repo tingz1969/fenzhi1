@@ -140,9 +140,9 @@ export default function Profile() {
     }
   }
 
-  const handleListingDelete = async(listigId) => {
+  const handleListingDelete = async(listingId) => {
     try {
-      const res = await fetch(`/api/listing/delete/${listigId}`, {
+      const res = await fetch(`/api/listing/delete/${listingId}`, {
         method: 'DELETE',
       });
       const data = await res.json()
@@ -151,7 +151,7 @@ export default function Profile() {
         return;
       }
       setUserListings((prev) => 
-        prev.filter((listing) => listing._id !== listigId)
+        prev.filter((listing) => listing._id !== listingId)
       )
     } catch (error) {
       console.log(error.message)
@@ -201,10 +201,10 @@ export default function Profile() {
           {
             userListings.map((listing) => (
               <div key={listing._id} className='border rounded-lg p-3 flex justify-between items-center gap-4'>
-                <Link to={`/listig/${listing._id}`}>
+                <Link to={`/listing/${listing._id}`}>
                   <img src={listing.imageUrls[0]} alt="listing cover" className='h-16 w-16 object-contain'/>
                 </Link>
-                <Link className='text-slate-700 flex-1 font-semibold hover:underline truncate' to={`/listig/${listing._id}`}>
+                <Link className='text-slate-700 flex-1 font-semibold hover:underline truncate' to={`/listing/${listing._id}`}>
                   <p>{listing.name}</p>
                 </Link>
     
